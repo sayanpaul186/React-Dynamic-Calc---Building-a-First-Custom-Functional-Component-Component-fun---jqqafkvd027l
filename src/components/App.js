@@ -22,9 +22,9 @@ const App = () => {
   return (
     <div className="App">
       <h2>add numbers</h2>
-      <input onChange={handleaddNumber} value={count} type="number" />
-      <input onChange={handleaddNumber2} value={count2} type="number" />
-      <Input values={count} values2={count2} resetVal={resetValFunc} />
+      <input onChange={handleaddNumber} value={count} id="input1" type="number" />
+      <input onChange={handleaddNumber2} value={count2} id="input2" type="number" />
+      <Input values={count} values2={count2} id="result" resetVal={resetValFunc} />
     </div>
   );
 };
