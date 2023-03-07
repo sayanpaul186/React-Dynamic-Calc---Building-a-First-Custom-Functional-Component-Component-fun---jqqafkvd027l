@@ -1,30 +1,32 @@
-import React,{useState} from 'react'
-import '../styles/App.css';
-
+import React, { useState, useEffect } from "react";
+import "../styles/App.css";
 const App = () => {
-  const [expense, setExpense] = useState(0);
-  const handle = () => {
-    const a = document.createElement("li");
-    const b = document.getElementById("expense-input").value;
-    a.innerHTML = b;
-    document.getElementById("expense-list").appendChild(a);
-    const c = b.indexOf('-');  
-    const d = b.slice(c + 1).trim();
-    setExpense(parseInt(d) + expense);
-  }
+  const [output, setOutput] = useState(0);
+  const [value1, setValue1] = useState(0);
+  const [value2, setValue2] = useState(0);
+
+  useEffect(() => {
+    setOutput(Number(value1) + Number(value2));
+  }, [value1, value2]);
 
   return (
     <div id="main">
-      <input id="expense-input" />
-      <button id="expense-button" onClick={handle}>Add Expense</button>
-      <div id="expense-list">
-      </div>
-      <div id="total-expense">
-        Total Expense: 400
-      </div>
+      <input
+        id="input1"
+        type="number"
+        value={value1}
+        onChange={(e) => setValue1(e.target.value)}
+      />
+      +
+      <input
+        id="input2"
+        type="number"
+        value={value2}
+        onChange={(e) => setValue2(e.target.value)}
+      />
+      <p id="result">{output}</p>
     </div>
-  )
-}
-
+  );
+};
 
 export default App;
